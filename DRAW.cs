@@ -361,7 +361,6 @@ namespace UFO {
 
             shaderProgram.Use();
             meshVao.Draw(PrimitiveType.Triangles);
-            // GL.UseProgram(0); // Do not use that program anymore
 
 
             switch (MODE) {
