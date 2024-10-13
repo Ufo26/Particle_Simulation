@@ -15,6 +15,7 @@ using System.Linq;
 using OpenTK.Input;
 using static System.Math;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace UFO {
     /// <summary> Класс отрисовки графики частиц симуляции. Содержит: <br/>
@@ -224,9 +225,9 @@ namespace UFO {
 
             meshVbo = new GL_DRAW_2D.VBO();
             meshVbo.SetData(new[] {
-                new GL_DRAW_2D.VBO.Vertex(1000.0f, 400.0f, new Color4(0f, 1f, 0f, 1f)),
-                new GL_DRAW_2D.VBO.Vertex(1200.0f, 600.0f, new Color4(0f, 1f, 0f, 1f)),
-                new GL_DRAW_2D.VBO.Vertex(1000.0f, 600.0f, new Color4(0f, 1f, 0f, 1f))
+                new GL_DRAW_2D.VBO.Vertex(-0.5f, -0.5f, new Color4(1f, 0f, 0f, 1f)),
+                new GL_DRAW_2D.VBO.Vertex(0.5f, -0.5f, new Color4(0f, 1f, 0f, 1f)),
+                new GL_DRAW_2D.VBO.Vertex(0.0f, 0.5f, new Color4(0f, 0f, 1f, 1f))
             });
             meshVao = new GL_DRAW_2D.VAO(3); // 3 вершины
             meshVao.AttachVBO(0, meshVbo, 2, VertexAttribPointerType.Float, 6 * sizeof(float), 0); // Нулевой атрибут вершины – позиция, у неё 2 компонента типа float
@@ -358,7 +359,7 @@ namespace UFO {
             var parts = Link_SIMULATION.Particles; var Grid = Link_SIMULATION.Grid;
             bool DrawGrid = false;//true = нарисовать оконную сетку
 
-            //shaderProgram.Use();
+            shaderProgram.Use();
             meshVao.Draw(PrimitiveType.Triangles);
 
             switch (MODE) {
