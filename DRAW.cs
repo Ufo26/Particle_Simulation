@@ -362,7 +362,6 @@ namespace UFO {
             shaderProgram.Use();
             meshVao.Draw(PrimitiveType.Triangles);
 
-
             switch (MODE) {
                 case DrawMode.Default: //отрисовка симуляции по умолчанию с помощью множества вызовов DrawCircle
                     //скорость отрисовки: FPS 250
